@@ -7,7 +7,7 @@
 
 #include "header.h"
 
-void main(int cuantos, char **datos){
+void main(int argc, char *argv[]){
 
 	iniciar();
 
