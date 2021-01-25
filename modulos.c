@@ -14,7 +14,13 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
 	unsigned char *imgdata;   
 	uint16_t type; 
 
-    printf("file: %s", nombre);
+    //Abrir imagen en lectura
+    fileImagen = fopen(nombre, "r");
+	if (!fileImagen){
+        puts("Imagen no se abrio correctamente");  
+    }  
+    fread(&type, sizeof(uint16_t), 1, fileImagen);
+    printf("%d", type);  
 }
 
 //Funcion para sumar
