@@ -9,6 +9,6 @@
 
 void main(int argc, char *argv[]){
 
-	iniciar(argv[1], argv[2], argv[3]);
+	iniciar(argv[1], argv[2]);
 
 }

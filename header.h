@@ -31,9 +31,10 @@ typedef struct{
 } IMAGEN;
 
 
-void iniciar(char *nombre, char *nombre1, char *nombre2);
-void fragmentarImagen(char *nombre, IMAGEN *matriz);
-void sumarImagenes(char *nombre1, char *nombre2);
+void iniciar(char *nombre1, char *nombre2);
+unsigned char *cargaImagen(char *filename, IMAGEN *matriz);
+unsigned char *fragmentarImagen(IMAGEN *contenido, unsigned char *pixeles);
+unsigned char *sumarImagenes(unsigned char *pixeles, unsigned char *info);
 void multiImagenes();
 void guardarPNG();
 void tiempo();
