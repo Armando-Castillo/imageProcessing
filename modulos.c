@@ -1,9 +1,11 @@
 #include "header.h"
 
+
 //Función para iniciar
-void iniciar(char *nombre){
+void iniciar(char *nombre, char *nombre1, char *nombre2){
     IMAGEN matriz;
     fragmentarImagen(nombre, &matriz);
+    sumarImagenes(nombre1, nombre2);
 }
 
 
@@ -79,18 +81,18 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
 
     for(ejeY=matriz->alto/2; ejeY>=0; ejeY--){
 		for(ejeX=0; ejeX<=matriz->ancho/2; ejeX++){
-            printf("%d\t", imgdata[ejeX+ejeY*(matriz->ancho/2)]);
-            fprintf(fragmento1, "%d\t", imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            char *buffer[5];
+            //printf("%d\t", imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            fprintf(fragmento1, "%i\t", imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             posicionX++;
         }
         posicionY++;
         fprintf(fragmento1,"\n");
     }
 
-    printf("FRAGMENTO 2");
     for(ejeY=matriz->alto/2; ejeY>=0; ejeY--){
 		for(ejeX=matriz->ancho/2; ejeX<=matriz->ancho; ejeX++){
-            printf("%d\t",imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            //printf("%d\t",imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             fprintf(fragmento2, "%d\t",imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             posicionX++;
         }
@@ -98,10 +100,9 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
         fprintf(fragmento2,"\n");
     }
 
-    printf("FRAGMENTO 3");
     for(ejeY=matriz->alto; ejeY>=matriz->alto/2; ejeY--){
 		for(ejeX=0; ejeX<=matriz->ancho/2; ejeX++){
-            printf("%d\t",imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            //printf("%d\t",imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             fprintf(fragmento3, "%d\t", imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             posicionX++;
         }
@@ -109,16 +110,17 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
         fprintf(fragmento3,"\n");
     }
 
-    printf("FRAGMENTO 4");
     for(ejeY=matriz->alto; ejeY>=matriz->alto/2; ejeY--){
 		for(ejeX=matriz->ancho/2; ejeX<=matriz->ancho; ejeX++){
-            printf("%d\t", imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            //printf("%d\t", imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             fprintf(fragmento4, "%d\t",imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             posicionX++;
         }
         posicionY++;
         fprintf(fragmento4,"\n");
     }
+
+    printf("Imagen fragmentada\n");
     fwrite(imgdata,(matriz->ancho/2)*(matriz->alto/2),1, fragmento1);
     fclose(fragmento1);
     fclose(fragmento2);
@@ -128,8 +130,20 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
 }
 
 //Funcion para sumar
-void sumarImagenes(){
+void sumarImagenes(char *nombre1, char *nombre2){
+    printf("%s %s", nombre1, nombre2);
+    FILE *matriz1 = NULL;
+    FILE *matriz2 = NULL;
 
+    matriz1 = fopen(nombre1, "r");
+    matriz2 = fopen(nombre2, "r");
+
+    char buff[255];
+	while (fgets(buff, 255, matriz1) != NULL)
+     	printf("%s", buff);
+
+    while (fgets(buff, 255, matriz2) != NULL)
+     	printf("%s", buff);
 }
 
 
