@@ -10,7 +10,7 @@ void iniciar(char *nombre){
 
 //Funcion para fragmentar
 void fragmentarImagen(char *nombre, IMAGEN *matriz){
-    printf("Matriz \n Nombre: %s \n Alto:%d", nombre, matriz->alto);
+    printf("Matriz");
 }
 
 //Funcion para sumar
