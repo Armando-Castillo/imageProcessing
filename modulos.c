@@ -65,25 +65,65 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
 
     //nuevoArchivo
     FILE *fragmento1 = NULL;
-    fragmento1 = fopen("fragmento1.png", "w");
-
+    fragmento1 = fopen("fragmento1.txt", "w");
+    FILE *fragmento2 = NULL;
+    fragmento2 = fopen("fragmento2.txt", "w");
+    FILE *fragmento3 = NULL;
+    fragmento3 = fopen("fragmento3.txt", "w");
+    FILE *fragmento4 = NULL;
+    fragmento4 = fopen("fragmento4.txt", "w");
     int ejeX = matriz->alto/2;
     int ejeY = matriz->ancho/2;
     int posicionX = 0;
     int posicionY = 0;
 
-    /*for(ejeY=matriz->alto/2; ejeY>=0; ejeY--){
+    for(ejeY=matriz->alto/2; ejeY>=0; ejeY--){
 		for(ejeX=0; ejeX<=matriz->ancho/2; ejeX++){
-            printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho)]);
-            fprintf(fragmento1, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho)]);
+            printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            fprintf(fragmento1, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             posicionX++;
         }
         posicionY++;
         fprintf(fragmento1,"\n");
-    }*/
+    }
 
+    printf("FRAGMENTO 2");
+    for(ejeY=matriz->alto/2; ejeY>=0; ejeY--){
+		for(ejeX=matriz->ancho/2; ejeX<=matriz->ancho; ejeX++){
+            printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            fprintf(fragmento2, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            posicionX++;
+        }
+        posicionY++;
+        fprintf(fragmento2,"\n");
+    }
+
+    printf("FRAGMENTO 3");
+    for(ejeY=matriz->alto; ejeY>=matriz->alto/2; ejeY--){
+		for(ejeX=0; ejeX<=matriz->ancho/2; ejeX++){
+            printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            fprintf(fragmento3, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            posicionX++;
+        }
+        posicionY++;
+        fprintf(fragmento3,"\n");
+    }
+
+    printf("FRAGMENTO 4");
+    for(ejeY=matriz->alto; ejeY>=matriz->alto/2; ejeY--){
+		for(ejeX=matriz->ancho/2; ejeX<=matriz->ancho; ejeX++){
+            printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            fprintf(fragmento4, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            posicionX++;
+        }
+        posicionY++;
+        fprintf(fragmento4,"\n");
+    }
     fwrite(imgdata,(matriz->ancho/2)*(matriz->alto/2),1, fragmento1);
     fclose(fragmento1);
+    fclose(fragmento2);
+    fclose(fragmento3);
+    fclose(fragmento4);
     free(imgdata);
 }
 
