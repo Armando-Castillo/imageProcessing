@@ -169,6 +169,7 @@ unsigned char *sumarImagenes(unsigned char *pixeles, unsigned char *info){
   fclose(archivoSuma);
   free(pixeles);
   free(info);
+  printf("Imagenes sumadas\n");
   return pixels;
 }
 
@@ -210,6 +211,7 @@ unsigned char *multiImagenes(unsigned char *pixeles, unsigned char *info){
   fclose(archivoMulti);
   free(pixeles);
   free(info);
+  printf("Imagenes multiplicadas\n");
   return pixels;
 }
 
@@ -244,6 +246,7 @@ void guardarBMP(char *filename, IMAGEN *info, unsigned char *imgdata)
   /* Escribimos la imagen */
   fwrite(imgdata, 49152, 1, f);
   fclose(f);
+  printf("Imagen guardada\n");
 }
 
 
