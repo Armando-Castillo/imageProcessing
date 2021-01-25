@@ -1,19 +1,20 @@
 #include "header.h"
 
 //Estructura para cabecera de imagen
-typedef struct Header{
 
+typedef struct Header{
+    int type;
 };
 
 //Estructura para cuerpo de imagen
 typedef struct Imagen{
-
+    int type;
 };
 
 
 //Función para iniciar
-void iniciar(){
-
+void iniciar(char *nombre){
+    printf("%s", nombre);
 }
 
 
