@@ -10,7 +10,7 @@ void iniciar(char *nombre){
 //Funcion para fragmentar
 void fragmentarImagen(char *nombre, IMAGEN *matriz){
     FILE *fileImagen;
-	Header infoImg;     
+	HEADER infoImg;     
 	unsigned char *imgdata;   
 	uint16_t type; 
 
@@ -22,9 +22,16 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
     fread(&type, sizeof(uint16_t), 1, fileImagen);
     if(type != 20617){
         printf("EL archivo '%s' no es png", nombre);
+        fclose(fileImagen);
         return;
     }
-    printf("Obteniendo info");
+    printf("Obteniendo info...\n");
+    fread(&infoImg,sizeof(HEADER),1,fileImagen);
+    fread(matriz,sizeof(IMAGEN),1,fileImagen);
+
+
+    printf("El tamaño del archivo: %d\n",infoImg.size);
+    printf("Eloffset %d\n",infoImg.offset);
 }
 
 //Funcion para sumar

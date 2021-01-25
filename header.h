@@ -14,7 +14,7 @@ typedef struct {
   uint16_t caracteristicaAdicional;       // Información reservada de la imagen
   uint16_t reservadoCopia;            //Se incrementa por cada copia  
   int offset;      		                  // Valor donde empieza el pixel partiendo desde el inicio del archivo
-} Header; //12 bytes							  // variable que almacena la estructura de la cabecer
+} HEADER; //12 bytes							  // variable que almacena la estructura de la cabecer
 
 //Estructura para cuerpo de imagen
 typedef struct{
