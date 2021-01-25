@@ -12,7 +12,7 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
     FILE *fileImagen;
 	HEADER infoImg;     
 	unsigned char *imgdata;   
-	uint16_t type; 
+	uint32_t type; 
 
     //Abrir imagen en lectura
     fileImagen = fopen(nombre, "r");
@@ -20,7 +20,7 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
         puts("Imagen no se abrio correctamente");  
     }  
     fread(&type, sizeof(uint16_t), 1, fileImagen);
-    if(type != 20617){
+    if(type != 0x4D42){
         printf("EL archivo '%s' no es png", nombre);
         fclose(fileImagen);
         return;
@@ -62,26 +62,25 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
     printf("Planos: %i\n", matriz->planes);
     printf("resX: %i\n", matriz->resX);
     printf("resY: %i\n", matriz->resY);
-    printf("data %s", imgdata);
 
     //nuevoArchivo
     FILE *fragmento1 = NULL;
     fragmento1 = fopen("fragmento1.png", "w");
 
-    int ejeX = 0;
-    int ejeY = 0;
+    int ejeX = matriz->alto/2;
+    int ejeY = matriz->ancho/2;
     int posicionX = 0;
     int posicionY = 0;
 
-    for(ejeY=matriz->alto/2; ejeY>0; ejeY--){
-		for(ejeX=0; ejeX<matriz->ancho/2; ejeX++){
+    /*for(ejeY=matriz->alto/2; ejeY>=0; ejeY--){
+		for(ejeX=0; ejeX<=matriz->ancho/2; ejeX++){
             printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho)]);
             fprintf(fragmento1, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho)]);
             posicionX++;
         }
         posicionY++;
         fprintf(fragmento1,"\n");
-    }
+    }*/
 
     fwrite(imgdata,(matriz->ancho/2)*(matriz->alto/2),1, fragmento1);
     fclose(fragmento1);
