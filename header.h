@@ -6,7 +6,7 @@
 #define PNGFORMATO 0x5D40
 #define FRAGMENTO 64
 #define TAMANO 128
-#define IMAGEN "imagen.png"
+//#define IMAGEN "imagen128.png"
 
 void iniciar(char *nombre);
 void fragmentarImagen();

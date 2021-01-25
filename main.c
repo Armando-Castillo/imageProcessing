@@ -7,8 +7,8 @@
 
 #include "header.h"
 
-void main(){
+void main(int argc, char *argv[]){
 
-	iniciar(IMAGEN);
+	iniciar(argv[1]);
 
 }
