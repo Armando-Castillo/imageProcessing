@@ -29,9 +29,27 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
     fread(&infoImg,sizeof(HEADER),1,fileImagen);
     fread(matriz,sizeof(IMAGEN),1,fileImagen);
 
-
+    //tamaño y offset
     printf("El tamaño del archivo: %d\n",infoImg.size);
-    printf("Eloffset %d\n",infoImg.offset);
+    printf("El offset %d\n",infoImg.offset);
+    printf("Ancho: %i\n", matriz->ancho);
+    printf("Alto: %i\n", matriz->alto);
+    printf("Bpp: %i\n", matriz->bpp);
+    printf("coloresR: %i\n", matriz->coloresR);
+    printf("compresion: %i\n", matriz->compresion);
+    printf("Imgsize: %i\n", matriz->imgsize);
+    printf("Imxtcolors: %i\n", matriz->imxtcolors);
+    printf("Planos: %i\n", matriz->planes);
+    printf("resX: %i\n", matriz->resX);
+    printf("resY: %i\n", matriz->resY);
+    //Leer la imagen (datos/pixeles); reservamos e primer lugar memoria dinámica para la matriz de datos
+    imgdata=(unsigned char*)malloc((matriz->ancho)*(matriz->alto));
+    if(imgdata==NULL){
+		puts("La memoria no es suficiente");
+		fclose(fileImagen);
+		return;
+    }
+    printf("data %s", imgdata);
 }
 
 //Funcion para sumar
