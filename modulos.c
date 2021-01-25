@@ -2,15 +2,19 @@
 
 //Función para iniciar
 void iniciar(char *nombre){
-    printf("%s", nombre);
-    IMAGEN *matriz;
-    fragmentarImagen(nombre, matriz);
+    IMAGEN matriz;
+    fragmentarImagen(nombre, &matriz);
 }
 
 
 //Funcion para fragmentar
 void fragmentarImagen(char *nombre, IMAGEN *matriz){
-    printf("Matriz");
+    FILE *fileImagen;
+	Header infoImg;     
+	unsigned char *imgdata;   
+	uint16_t type; 
+
+    printf("file: %s", nombre);
 }
 
 //Funcion para sumar
