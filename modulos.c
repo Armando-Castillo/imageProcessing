@@ -90,8 +90,8 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
     printf("FRAGMENTO 2");
     for(ejeY=matriz->alto/2; ejeY>=0; ejeY--){
 		for(ejeX=matriz->ancho/2; ejeX<=matriz->ancho; ejeX++){
-            printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
-            fprintf(fragmento2, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            printf("%d\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            fprintf(fragmento2, "%d\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             posicionX++;
         }
         posicionY++;
@@ -101,8 +101,8 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
     printf("FRAGMENTO 3");
     for(ejeY=matriz->alto; ejeY>=matriz->alto/2; ejeY--){
 		for(ejeX=0; ejeX<=matriz->ancho/2; ejeX++){
-            printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
-            fprintf(fragmento3, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            printf("%d\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            fprintf(fragmento3, "%d\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             posicionX++;
         }
         posicionY++;
@@ -112,8 +112,8 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
     printf("FRAGMENTO 4");
     for(ejeY=matriz->alto; ejeY>=matriz->alto/2; ejeY--){
 		for(ejeX=matriz->ancho/2; ejeX<=matriz->ancho; ejeX++){
-            printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
-            fprintf(fragmento4, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            printf("%d\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
+            fprintf(fragmento4, "%d\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho/2)]);
             posicionX++;
         }
         posicionY++;
