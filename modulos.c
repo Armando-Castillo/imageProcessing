@@ -20,7 +20,11 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
         puts("Imagen no se abrio correctamente");  
     }  
     fread(&type, sizeof(uint16_t), 1, fileImagen);
-    printf("%d", type);  
+    if(type != 20617){
+        printf("EL archivo '%s' no es png", nombre);
+        return;
+    }
+    printf("Obteniendo info");
 }
 
 //Funcion para sumar
