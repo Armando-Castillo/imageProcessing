@@ -35,8 +35,8 @@ void iniciar(char *nombre1, char *nombre2);
 unsigned char *cargaImagen(char *filename, IMAGEN *matriz);
 unsigned char *fragmentarImagen(IMAGEN *contenido, unsigned char *pixeles);
 unsigned char *sumarImagenes(unsigned char *pixeles, unsigned char *info);
-void multiImagenes();
-void guardarPNG();
+unsigned char *multiImagenes(unsigned char *pixeles, unsigned char *data);
+void guardarBMP(char *filename, IMAGEN *info, unsigned char *imgdata);
 void tiempo();
 
 
