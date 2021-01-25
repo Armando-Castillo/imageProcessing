@@ -32,6 +32,26 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
     //tamaño y offset
     printf("El tamaño del archivo: %d\n",infoImg.size);
     printf("El offset %d\n",infoImg.offset);
+
+    //Leer la imagen (datos/pixeles); reservamos e primer lugar memoria dinámica para la matriz de datos
+    imgdata=(unsigned char*)malloc((matriz->ancho)*(matriz->alto));
+    if(imgdata==NULL){
+		puts("La memoria no es suficiente");
+		fclose(fileImagen);
+		return;
+    }
+    //Mover el cursor al punto especifico donde inician los datos
+    fseek(fileImagen, infoImg.offset, SEEK_SET);
+
+    //Leer los datos de manera lineal
+    fread(imgdata,(matriz->ancho)*(matriz->alto),1,fileImagen);
+
+    //fwrite() para resguardar la información
+
+    //cerrar el archivo de la imagen
+    fclose(fileImagen);
+
+    //info
     printf("Ancho: %i\n", matriz->ancho);
     printf("Alto: %i\n", matriz->alto);
     printf("Bpp: %i\n", matriz->bpp);
@@ -42,14 +62,30 @@ void fragmentarImagen(char *nombre, IMAGEN *matriz){
     printf("Planos: %i\n", matriz->planes);
     printf("resX: %i\n", matriz->resX);
     printf("resY: %i\n", matriz->resY);
-    //Leer la imagen (datos/pixeles); reservamos e primer lugar memoria dinámica para la matriz de datos
-    imgdata=(unsigned char*)malloc((matriz->ancho)*(matriz->alto));
-    if(imgdata==NULL){
-		puts("La memoria no es suficiente");
-		fclose(fileImagen);
-		return;
-    }
     printf("data %s", imgdata);
+
+    //nuevoArchivo
+    FILE *fragmento1 = NULL;
+    fragmento1 = fopen("fragmento1.png", "w");
+
+    int ejeX = 0;
+    int ejeY = 0;
+    int posicionX = 0;
+    int posicionY = 0;
+
+    for(ejeY=matriz->alto/2; ejeY>0; ejeY--){
+		for(ejeX=0; ejeX<matriz->ancho/2; ejeX++){
+            printf("[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho)]);
+            fprintf(fragmento1, "[%d][%d]=[%d]\t",ejeY, ejeX, imgdata[ejeX+ejeY*(matriz->ancho)]);
+            posicionX++;
+        }
+        posicionY++;
+        fprintf(fragmento1,"\n");
+    }
+
+    fwrite(imgdata,(matriz->ancho/2)*(matriz->alto/2),1, fragmento1);
+    fclose(fragmento1);
+    free(imgdata);
 }
 
 //Funcion para sumar
